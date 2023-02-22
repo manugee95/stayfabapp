@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+		/>
+		<link rel="stylesheet" href="css/styles.css" />
+		<script defer src="../src/js/config.js"></script>
+		<script defer src="../src/js/components/menu.js"></script>
+		<script defer src="../src/js/components/auth.js"></script>
+		<script defer src="../src/js/components/cart.js"></script>
+		<script defer src="../src/js/components/account.js"></script>
+		<script
+			defer
+			src="https://unpkg.com/alpinejs@3.10.4/dist/cdn.min.js"
+		></script>
+		<title>Stayfab</title>
+	</head>
+	<body>
+		<template x-data x-teleport="body">
+			<div
+				x-data="auth"
+				class="fixed z-[4] bg-overlayColor top-0 w-full h-full left-0"
+				@click="hideMe"
+				@signin-signup.window="showMe"
+				x-show="open"
+			>
+				<template x-teleport="body">
+					<div
+						:class="open ? 'translate-x-0' : 'translate-x-[1000px]'"
+						class="w-full md:w-[500px] md:border-l-[1.5px] md:border-l-primary top-0 md:right-0 h-full overflow-auto bg-white fixed z-[5] p-8 transition-all duration-300"
+					>
+						<div class="flex items-center justify-end">
+							<span
+								@click="hideMe"
+								class="flex items-center justify-center w-[35px] h-[35px] rounded-full"
+							>
+								<svg
+									width="22"
+									height="22"
+									viewBox="0 0 22 22"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M1 21L21 1M1 1L21 21"
+										stroke="#0F172A"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</span>
+						</div>
+						<div class="mt-12">
+							<p
+								class="text-[2rem] md:text-[2.5rem] font-extrabold text-customBlack"
+							>
+								SIGN IN OR CREATE AN ACCOUNT
+							</p>
+							<div
+								class="mt-12 w-full h-[50px] flex items-center overflow-hidden rounded-lg bg-primaryLight"
+							>
+								<span
+									class="w-1/2 flex items-center justify-center h-full bg-secondary text-2xl font-medium text-white cursor-pointer"
+									>Sign In</span
+								>
+								<span
+									class="w-1/2 flex items-center justify-center h-full bg-transparent text-2xl font-medium text-[#c4c4c4] cursor-pointer"
+									>Create Account</span
+								>
+							</div>
+							<form action="" class="hidden mt-12 flex-col gap-y-8">
+								<div class="flex flex-col gap-y-6">
+									<label
+										for="login_email"
+										class="text-2xl font-medium text-customBlack"
+										>Email Address</label
+									>
+									<div
+										class="w-full border-[1.5px] bg-[#F6F2F3] border-[#F6F2F3] focus-within:border-secondary transition-all duration-300 h-[50px] flex items-center px-5 gap-x-3"
+									>
+										<input
+											class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
+											type="email"
+											placeholder="Email Address"
+											name=""
+											id="email"
+										/>
+									</div>
+								</div>
+								<div class="flex flex-col gap-y-6">
+									<label
+										for="login_email"
+										class="text-2xl font-medium text-customBlack"
+										>Password</label
+									>
+									<div
+										class="w-full border-[1.5px] bg-[#F6F2F3] border-[#F6F2F3] focus-within:border-secondary transition-all duration-300 h-[50px] flex items-center px-5 gap-x-3"
+									>
+										<input
+											class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
+											type="password"
+											placeholder="Password"
+											name=""
+											id=""
+										/>
+									</div>
+								</div>
+								<div>
+									<button
+										class="w-full outline-none border-none flex items-center justify-center bg-primary text-white text-2xl font-medium py-6"
+									>
+										Sign In
+									</button>
+								</div>
+							</form>
+							<form action="" class="flex mt-12 flex-col gap-y-8">
+								<div class="flex flex-col gap-y-6">
+									<label
+										for="login_email"
+										class="text-2xl font-medium text-customBlack"
+										>Full Name</label
+									>
+									<div
+										class="w-full border-[1.5px] bg-[#F6F2F3] border-[#F6F2F3] focus-within:border-secondary transition-all duration-300 h-[50px] flex items-center px-5 gap-x-3"
+									>
+										<input
+											class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
+											type="text"
+											placeholder="Full Name"
+											name=""
+											id=""
+										/>
+									</div>
+								</div>
+								<div class="flex flex-col gap-y-6">
+									<label
+										for="login_email"
+										class="text-2xl font-medium text-customBlack"
+										>Email Address</label
+									>
+									<div
+										class="w-full border-[1.5px] bg-[#F6F2F3] border-[#F6F2F3] focus-within:border-secondary transition-all duration-300 h-[50px] flex items-center px-5 gap-x-3"
+									>
+										<input
+											class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
+											type="email"
+											placeholder="Email Address"
+											name=""
+											id=""
+										/>
+									</div>
+								</div>
+								<div class="flex flex-col gap-y-6">
+									<label
+										for="login_email"
+										class="text-2xl font-medium text-customBlack"
+										>Phone number</label
+									>
+									<div
+										class="w-full border-[1.5px] bg-[#F6F2F3] border-[#F6F2F3] focus-within:border-secondary transition-all duration-300 h-[50px] flex items-center px-5 gap-x-3"
+									>
+										<input
+											class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
+											type="phone"
+											placeholder="Phone Number"
+											name=""
+											id=""
+										/>
+									</div>
+								</div>
+								<div class="flex flex-col gap-y-6">
+									<label
+										for="login_email"
+										class="text-2xl font-medium text-customBlack"
+										>Password</label
+									>
+									<div
+										class="w-full border-[1.5px] bg-[#F6F2F3] border-[#F6F2F3] focus-within:border-secondary transition-all duration-300 h-[50px] flex items-center px-5 gap-x-3"
+									>
+										<input
+											class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
+											type="password"
+											placeholder="Password"
+											name=""
+											id=""
+										/>
+									</div>
+								</div>
+								<div>
+									<button
+										class="w-full outline-none border-none flex items-center justify-center bg-primary text-white text-2xl font-medium py-6"
+									>
+										Create Account
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</template>
+			</div>
+		</template>
+		<template x-data x-teleport="body">
+			<div
+				x-data="cart"
+				class="fixed z-[4] bg-overlayColor top-0 w-full h-full left-0"
+				@click="hideMe"
+				@show-cart.window="showMe"
+				x-show="open"
+			>
+				<template x-teleport="body">
+					<div
+						:class="isOpen ? 'translate-x-0' : 'translate-x-[1000px]'"
+						class="w-full md:w-[500px] md:border-l-[1.5px] md:border-l-primary top-0 md:right-0 h-full overflow-auto bg-white fixed z-[5] transition-all duration-300"
+					>
+						<div class="flex items-center justify-between p-8">
+							<span class="text-[3rem] font-semibold text-secondary"
+								>Your Bag</span
+							>
+							<span
+								@click="hideMe"
+								class="flex items-center justify-center w-[35px] h-[35px] rounded-full"
+							>
+								<svg
+									width="22"
+									height="22"
+									viewBox="0 0 22 22"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M1 21L21 1M1 1L21 21"
+										stroke="#0F172A"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</span>
+						</div>
+						<div class="bg-[#FEF2F4] px-8">
+							<div class="flex flex-col gap-y-8 py-8">
+								<div
+									class="flex gap-x-7 last:border-0 border-b border-b-secondary pb-5"
+								>
+									<img
+										class="w-[100px] md:w-[148px] h-[88px] md:h-[136px] object-cover"
+										src="images/cart-image.png"
+										alt=""
+									/>
+									<div>
+										<span class="text-[1.7rem] font-semibold"
+											>A Moment Matte Liquid Lipstick</span
+										>
+										<div class="mt-4 flex items-center gap-x-5">
+											<span class="text-customBlack text-[1.7rem]">$23.45</span>
+											<span class="text-red-500 text-[1.7rem] line-through"
+												>$23.45</span
+											>
+										</div>
+										<div
+											class="flex flex-col gap-y-6 md:flex-row md:items-center justify-between mt-6"
+										>
+											<div class="flex items-center gap-x-10">
+												<span
+													class="flex items-center justify-center w-[27px] h-[27px] bg-secondary cursor-pointer"
+												>
+													<svg
+														width="14"
+														height="2"
+														viewBox="0 0 20 2"
+														fill="none"
+														xmlns="http://www.w3.org/2000/svg"
+													>
+														<line
+															x1="0.75"
+															y1="1.25"
+															x2="19.25"
+															y2="1.25"
+															stroke="white"
+															stroke-width="1.5"
+															stroke-linecap="round"
+														/>
+													</svg>
+												</span>
+												<span class="text-[1.7rem] text-customBlack">1</span>
+												<span
+													class="flex items-center justify-center w-[27px] h-[27px] bg-secondary cursor-pointer"
+												>
+													<svg
+														width="13"
+														height="14"
+														viewBox="0 0 20 21"
+														fill="none"
+														xmlns="http://www.w3.org/2000/svg"
+													>
+														<path
+															d="M10 1V19.9474M19 10.4737L1 10.4737"
+															stroke="white"
+															stroke-width="1.5"
+															stroke-linecap="round"
+															stroke-linejoin="round"
+														/>
+													</svg>
+												</span>
+											</div>
+											<a class="text-2xl text-[#817F81] underline" href=""
+												>Remove from bag</a
+											>
+										</div>
+									</div>
+								</div>
+								<div
+									class="flex gap-x-7 last:border-0 border-b border-b-secondary pb-5"
+								>
+									<img
+										class="w-[100px] md:w-[148px] h-[88px] md:h-[136px] object-cover"
+										src="images/cart-image.png"
+										alt=""
+									/>
+									<div>
+										<span class="text-[1.7rem] font-semibold"
+											>A Moment Matte Liquid Lipstick</span
+										>
+										<div class="mt-4 flex items-center gap-x-5">
+											<span class="text-customBlack text-[1.7rem]">$23.45</span>
+											<span class="text-red-500 text-[1.7rem] line-through"
+												>$23.45</span
+											>
+										</div>
+										<div
+											class="flex flex-col gap-y-6 md:flex-row md:items-center justify-between mt-6"
+										>
+											<div class="flex items-center gap-x-10">
+												<span
+													class="flex items-center justify-center w-[27px] h-[27px] bg-secondary cursor-pointer"
+												>
+													<svg
+														width="14"
+														height="2"
+														viewBox="0 0 20 2"
+														fill="none"
+														xmlns="http://www.w3.org/2000/svg"
+													>
+														<line
+															x1="0.75"
+															y1="1.25"
+															x2="19.25"
+															y2="1.25"
+															stroke="white"
+															stroke-width="1.5"
+															stroke-linecap="round"
+														/>
+													</svg>
+												</span>
+												<span class="text-[1.7rem] text-customBlack">1</span>
+												<span
+													class="flex items-center justify-center w-[27px] h-[27px] bg-secondary cursor-pointer"
+												>
+													<svg
+														width="13"
+														height="14"
+														viewBox="0 0 20 21"
+														fill="none"
+														xmlns="http://www.w3.org/2000/svg"
+													>
+														<path
+															d="M10 1V19.9474M19 10.4737L1 10.4737"
+															stroke="white"
+															stroke-width="1.5"
+															stroke-linecap="round"
+															stroke-linejoin="round"
+														/>
+													</svg>
+												</span>
+											</div>
+											<a class="text-2xl text-[#817F81] underline" href=""
+												>Remove from bag</a
+											>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div
+							class="border-y-[1.5px] bg-[#FEF2F4] border-y-primary py-8 px-8"
+						>
+							<ul class="w-full flex flex-col gap-y-5">
+								<li class="flex items-center justify-between">
+									<span class="text-customBlack text-2xl">Subtotal</span>
+									<span class="text-customBlack text-[1.7rem]">$125.56</span>
+								</li>
+								<li class="flex items-center justify-between">
+									<span class="text-customBlack text-2xl">Shipping Fee</span>
+									<span class="text-customBlack text-[1.7rem]">$3.56</span>
+								</li>
+								<li class="flex items-center justify-between">
+									<span class="text-customBlack text-2xl">VAT</span>
+									<span class="text-customBlack text-[1.7rem]">$13.56</span>
+								</li>
+							</ul>
+						</div>
+						<div class="bg-[#FEF2F4] py-8 px-8">
+							<p class="flex items-center justify-between">
+								<span class="text-customBlack font-bold text-[1.7rem]"
+									>Estimated Total</span
+								>
+								<span class="text-customBlack font-bold text-[1.7rem]"
+									>$13.56</span
+								>
+							</p>
+							<a
+								href="checkout.html"
+								class="mt-8 w-full flex items-center justify-center py-6 border-[1.5px] border-secondary bg-secondary text-[2rem] font-semibold text-white transition-all duration-200 hover:border-primary hover:bg-primary hover:text-white"
+							>
+								Proceed to Checkout
+							</a>
+						</div>
+					</div>
+				</template>
+			</div>
+		</template>
+		<header class="top-0 fixed w-full z-[2]">
+			<div
+				class="h-[8.5rem] bg-[#FFF8FB] flex items-center justify-between px-8 md:px-[5rem]"
+			>
+				<a href="index.html">
+					<div class="flex items-center gap-x-5">
+						<img src="images/stayfabLogo.png" alt="stayfab logo" />
+						<span
+							class="text-[1.8rem] md:text-[2.5rem] text-secondary font-bold"
+							>Stayfab</span
+						>
+					</div>
+				</a>
+				<div x-data="menu" class="block lg:hidden">
+					<span
+						@click="
+							toggle()
+							checkSearch()
+						"
+						class="flex w-[35px] h-[35px] items-center justify-center rounded-full"
+					>
+						<svg
+							x-show="!open"
+							width="24"
+							height="18"
+							viewBox="0 0 19 13"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M1 1H17.5M1 6.25H17.5M9.25 11.5H17.5"
+								class="stroke-secondary"
+								stroke-width="1.5"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+						</svg>
+						<svg
+							x-show="open"
+							width="22"
+							height="22"
+							viewBox="0 0 22 22"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M1 21L21 1M1 1L21 21"
+								class="stroke-secondary"
+								stroke-width="1.5"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+						</svg>
+					</span>
+					<template x-teleport="body">
+						<div
+							:class="open ? 'translate-x-0' : 'translate-x-[1000px]'"
+							class="w-full md:w-[500px] h-full block lg:hidden overflow-auto bg-white fixed top-[8.5rem] md:right-0 z-[3] p-8 pb-[8.5rem] duration-300 transition-all"
+						>
+							<div x-show="isSearching" class="w-full flex items-center">
+								<form class="w-full" action="">
+									<div
+										class="grow w-[90%] border-[1.5px] bg-[#F6F2F3] border-[#F6F2F3] focus-within:border-secondary transition-all duration-300 h-[40px] flex items-center px-5 gap-x-3"
+									>
+										<svg
+											width="20"
+											height="20"
+											viewBox="0 0 20 20"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												fill-rule="evenodd"
+												clip-rule="evenodd"
+												d="M8.25 1.5C4.52208 1.5 1.5 4.52208 1.5 8.25C1.5 11.9779 4.52208 15 8.25 15C10.1142 15 11.8006 14.2453 13.023 13.023C14.2453 11.8006 15 10.1142 15 8.25C15 4.52208 11.9779 1.5 8.25 1.5ZM0 8.25C0 3.69365 3.69365 0 8.25 0C12.8063 0 16.5 3.69365 16.5 8.25C16.5 10.2578 15.782 12.0991 14.5899 13.5293L19.2803 18.2197C19.5732 18.5126 19.5732 18.9874 19.2803 19.2803C18.9874 19.5732 18.5126 19.5732 18.2197 19.2803L13.5293 14.5899C12.0991 15.782 10.2578 16.5 8.25 16.5C3.69365 16.5 0 12.8063 0 8.25Z"
+												fill="#c3c3c3"
+											/>
+										</svg>
+										<input
+											class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
+											type="search"
+											placeholder="Search"
+											name=""
+											id=""
+										/>
+									</div>
+								</form>
+								<span
+									@click="hideSearch"
+									class="flex items-center justify-center w-[35px] h-[35px] rounded-full"
+								>
+									<svg
+										width="22"
+										height="22"
+										viewBox="0 0 22 22"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M1 21L21 1M1 1L21 21"
+											stroke="#0F172A"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</span>
+							</div>
+							<div
+								x-show="!isSearching"
+								class="flex items-center gap-x-24 justify-end"
+							>
+								<span
+									@click="showSearch"
+									class="flex items-center justify-center w-[35px] h-[35px] rounded-full cursor-pointer"
+								>
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 20 20"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											fill-rule="evenodd"
+											clip-rule="evenodd"
+											d="M8.25 1.5C4.52208 1.5 1.5 4.52208 1.5 8.25C1.5 11.9779 4.52208 15 8.25 15C10.1142 15 11.8006 14.2453 13.023 13.023C14.2453 11.8006 15 10.1142 15 8.25C15 4.52208 11.9779 1.5 8.25 1.5ZM0 8.25C0 3.69365 3.69365 0 8.25 0C12.8063 0 16.5 3.69365 16.5 8.25C16.5 10.2578 15.782 12.0991 14.5899 13.5293L19.2803 18.2197C19.5732 18.5126 19.5732 18.9874 19.2803 19.2803C18.9874 19.5732 18.5126 19.5732 18.2197 19.2803L13.5293 14.5899C12.0991 15.782 10.2578 16.5 8.25 16.5C3.69365 16.5 0 12.8063 0 8.25Z"
+											class="fill-black"
+										/>
+									</svg>
+								</span>
+								<div class="flex relative">
+									<span
+										class="absolute text-[0.9rem] text-white items-center justify-center flex w-[15px] h-[15px] bg-primary rounded-full right-[-5px] pointer-events-none"
+									>
+										2
+									</span>
+									<button x-data @click="$dispatch('show-cart')">
+										<svg
+											width="20"
+											height="22"
+											viewBox="0 0 20 22"
+											fill="none"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												d="M13.6255 9.5V5C13.6255 2.92893 11.9466 1.25 9.87548 1.25C7.80442 1.25 6.12548 2.92893 6.12548 5V9.5M17.4815 7.50723L18.7447 19.5072C18.8146 20.1715 18.2938 20.75 17.6258 20.75H2.12512C1.45721 20.75 0.936382 20.1715 1.0063 19.5072L2.26946 7.50723C2.32973 6.93466 2.81255 6.5 3.38828 6.5H16.3627C16.9384 6.5 17.4212 6.93466 17.4815 7.50723ZM6.50048 9.5C6.50048 9.70711 6.33259 9.875 6.12548 9.875C5.91838 9.875 5.75048 9.70711 5.75048 9.5C5.75048 9.29289 5.91838 9.125 6.12548 9.125C6.33259 9.125 6.50048 9.29289 6.50048 9.5ZM14.0005 9.5C14.0005 9.70711 13.8326 9.875 13.6255 9.875C13.4184 9.875 13.2505 9.70711 13.2505 9.5C13.2505 9.29289 13.4184 9.125 13.6255 9.125C13.8326 9.125 14.0005 9.29289 14.0005 9.5Z"
+												stroke="black"
+												stroke-width="1.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											/>
+										</svg>
+									</button>
+								</div>
+								<div
+									x-data="account"
+									@click="$dispatch('signin-signup')"
+									class="cursor-pointer relative"
+								>
+									<svg
+										width="17"
+										height="22"
+										viewBox="0 0 17 22"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M11.9998 5C11.9998 7.07107 10.3209 8.75 8.24984 8.75C6.17877 8.75 4.49984 7.07107 4.49984 5C4.49984 2.92893 6.17877 1.25 8.24984 1.25C10.3209 1.25 11.9998 2.92893 11.9998 5Z"
+											stroke="black"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+										<path
+											d="M0.750977 19.1182C0.821282 15.0369 4.15171 11.75 8.24984 11.75C12.3481 11.75 15.6786 15.0371 15.7487 19.1185C13.4659 20.166 10.9262 20.75 8.25016 20.75C5.57384 20.75 3.03394 20.1659 0.750977 19.1182Z"
+											stroke="black"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</div>
+							</div>
+							<div class="mt-16">
+								<ul
+									class="w-full flex flex-col items-center justify-center gap-y-6"
+								>
+									<li class="w-full border-b border-b-primary py-4">
+										<div class="flex items-center justify-between">
+											<span class="text-2xl font-medium text-customBlack"
+												>New In</span
+											>
+											<span>
+												<svg
+													width="14"
+													height="8"
+													viewBox="0 0 14 8"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														fill-rule="evenodd"
+														clip-rule="evenodd"
+														d="M0.230169 0.209376C0.528748 -0.0777189 1.00353 -0.0684095 1.29063 0.230169L7 6.16792L12.7094 0.230169C12.9965 -0.0684095 13.4713 -0.0777189 13.7698 0.209376C14.0684 0.496471 14.0777 0.971254 13.7906 1.26983L7.54063 7.76983C7.39922 7.91689 7.20401 8 7 8C6.79599 8 6.60078 7.91689 6.45938 7.76983L0.209376 1.26983C-0.0777189 0.971254 -0.0684095 0.496471 0.230169 0.209376Z"
+														class="fill-customBlack"
+													/>
+												</svg>
+											</span>
+										</div>
+									</li>
+									<li class="w-full border-b border-b-primary py-4">
+										<div class="flex items-center justify-between">
+											<span class="text-2xl font-medium text-customBlack"
+												>Women</span
+											>
+											<span>
+												<svg
+													width="14"
+													height="8"
+													viewBox="0 0 14 8"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														fill-rule="evenodd"
+														clip-rule="evenodd"
+														d="M0.230169 0.209376C0.528748 -0.0777189 1.00353 -0.0684095 1.29063 0.230169L7 6.16792L12.7094 0.230169C12.9965 -0.0684095 13.4713 -0.0777189 13.7698 0.209376C14.0684 0.496471 14.0777 0.971254 13.7906 1.26983L7.54063 7.76983C7.39922 7.91689 7.20401 8 7 8C6.79599 8 6.60078 7.91689 6.45938 7.76983L0.209376 1.26983C-0.0777189 0.971254 -0.0684095 0.496471 0.230169 0.209376Z"
+														class="fill-customBlack"
+													/>
+												</svg>
+											</span>
+										</div>
+									</li>
+									<li class="w-full border-b border-b-primary py-4">
+										<div class="flex items-center justify-between">
+											<span class="text-2xl font-medium text-customBlack"
+												>Men</span
+											>
+											<span>
+												<svg
+													width="14"
+													height="8"
+													viewBox="0 0 14 8"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														fill-rule="evenodd"
+														clip-rule="evenodd"
+														d="M0.230169 0.209376C0.528748 -0.0777189 1.00353 -0.0684095 1.29063 0.230169L7 6.16792L12.7094 0.230169C12.9965 -0.0684095 13.4713 -0.0777189 13.7698 0.209376C14.0684 0.496471 14.0777 0.971254 13.7906 1.26983L7.54063 7.76983C7.39922 7.91689 7.20401 8 7 8C6.79599 8 6.60078 7.91689 6.45938 7.76983L0.209376 1.26983C-0.0777189 0.971254 -0.0684095 0.496471 0.230169 0.209376Z"
+														class="fill-customBlack"
+													/>
+												</svg>
+											</span>
+										</div>
+									</li>
+									<li class="w-full border-b border-b-primary py-4">
+										<div class="flex items-center justify-between">
+											<span class="text-2xl font-medium text-customBlack"
+												>Beauty</span
+											>
+											<span>
+												<svg
+													width="14"
+													height="8"
+													viewBox="0 0 14 8"
+													fill="none"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														fill-rule="evenodd"
+														clip-rule="evenodd"
+														d="M0.230169 0.209376C0.528748 -0.0777189 1.00353 -0.0684095 1.29063 0.230169L7 6.16792L12.7094 0.230169C12.9965 -0.0684095 13.4713 -0.0777189 13.7698 0.209376C14.0684 0.496471 14.0777 0.971254 13.7906 1.26983L7.54063 7.76983C7.39922 7.91689 7.20401 8 7 8C6.79599 8 6.60078 7.91689 6.45938 7.76983L0.209376 1.26983C-0.0777189 0.971254 -0.0684095 0.496471 0.230169 0.209376Z"
+														class="fill-customBlack"
+													/>
+												</svg>
+											</span>
+										</div>
+									</li>
+									<li class="w-full border-b border-b-primary py-4">
+										<a href="">
+											<span class="text-2xl font-medium text-customBlack"
+												>Wellness</span
+											>
+										</a>
+									</li>
+									<li class="w-full border-b border-b-primary py-4">
+										<a href="">
+											<span class="text-2xl font-medium text-customBlack"
+												>Sales</span
+											>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div class="mt-12">
+								<a class="text-[1.7rem] text-secondary font-bold" href=""
+									>Log out</a
+								>
+							</div>
+						</div>
+					</template>
+				</div>
+				<div class="hidden lg:flex items-center gap-x-16">
+					<form action="">
+						<div
+							class="w-[298px] border-[1.5px] bg-[#F6F2F3] border-[#F6F2F3] focus-within:border-secondary transition-all duration-300 h-[40px] flex items-center px-5 gap-x-3"
+						>
+							<svg
+								width="20"
+								height="20"
+								viewBox="0 0 20 20"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M8.25 1.5C4.52208 1.5 1.5 4.52208 1.5 8.25C1.5 11.9779 4.52208 15 8.25 15C10.1142 15 11.8006 14.2453 13.023 13.023C14.2453 11.8006 15 10.1142 15 8.25C15 4.52208 11.9779 1.5 8.25 1.5ZM0 8.25C0 3.69365 3.69365 0 8.25 0C12.8063 0 16.5 3.69365 16.5 8.25C16.5 10.2578 15.782 12.0991 14.5899 13.5293L19.2803 18.2197C19.5732 18.5126 19.5732 18.9874 19.2803 19.2803C18.9874 19.5732 18.5126 19.5732 18.2197 19.2803L13.5293 14.5899C12.0991 15.782 10.2578 16.5 8.25 16.5C3.69365 16.5 0 12.8063 0 8.25Z"
+									fill="#c3c3c3"
+								/>
+							</svg>
+							<input
+								class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
+								type="search"
+								placeholder="Search"
+								name=""
+								id=""
+							/>
+						</div>
+					</form>
+					<div class="flex relative">
+						<span
+							class="absolute text-[0.9rem] text-white items-center justify-center flex w-[15px] h-[15px] bg-primary rounded-full right-[-5px] pointer-events-none"
+						>
+							2
+						</span>
+						<button x-data @click="$dispatch('show-cart')">
+							<svg
+								width="20"
+								height="22"
+								viewBox="0 0 20 22"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M13.6255 9.5V5C13.6255 2.92893 11.9466 1.25 9.87548 1.25C7.80442 1.25 6.12548 2.92893 6.12548 5V9.5M17.4815 7.50723L18.7447 19.5072C18.8146 20.1715 18.2938 20.75 17.6258 20.75H2.12512C1.45721 20.75 0.936382 20.1715 1.0063 19.5072L2.26946 7.50723C2.32973 6.93466 2.81255 6.5 3.38828 6.5H16.3627C16.9384 6.5 17.4212 6.93466 17.4815 7.50723ZM6.50048 9.5C6.50048 9.70711 6.33259 9.875 6.12548 9.875C5.91838 9.875 5.75048 9.70711 5.75048 9.5C5.75048 9.29289 5.91838 9.125 6.12548 9.125C6.33259 9.125 6.50048 9.29289 6.50048 9.5ZM14.0005 9.5C14.0005 9.70711 13.8326 9.875 13.6255 9.875C13.4184 9.875 13.2505 9.70711 13.2505 9.5C13.2505 9.29289 13.4184 9.125 13.6255 9.125C13.8326 9.125 14.0005 9.29289 14.0005 9.5Z"
+									stroke="black"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</button>
+					</div>
+					<!--  @click.outside="hideDrop" @click="toggle"-->
+					<div
+						x-data="account"
+						@click="$dispatch('signin-signup')"
+						class="cursor-pointer relative"
+					>
+						<svg
+							width="17"
+							height="22"
+							viewBox="0 0 17 22"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M11.9998 5C11.9998 7.07107 10.3209 8.75 8.24984 8.75C6.17877 8.75 4.49984 7.07107 4.49984 5C4.49984 2.92893 6.17877 1.25 8.24984 1.25C10.3209 1.25 11.9998 2.92893 11.9998 5Z"
+								stroke="black"
+								stroke-width="1.5"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+							<path
+								d="M0.750977 19.1182C0.821282 15.0369 4.15171 11.75 8.24984 11.75C12.3481 11.75 15.6786 15.0371 15.7487 19.1185C13.4659 20.166 10.9262 20.75 8.25016 20.75C5.57384 20.75 3.03394 20.1659 0.750977 19.1182Z"
+								stroke="black"
+								stroke-width="1.5"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+						</svg>
+						<div
+							x-show="open"
+							x-transition
+							class="shadow-dropdown rounded-lg absolute w-[200px] right-0 top-[110%] bg-white p-5"
+						>
+							<ul class="flex flex-col gap-y-3">
+								<li class="w-full">
+									<a
+										class="flex items-center gap-x-3 py-3 px-3 transition-all hover:bg-primaryLight"
+										href="account.html"
+									>
+										<i class="fa-solid fa-user text-2xl text-secondary"></i>
+										<span class="text-[1.5rem] text-secondary">My Profile</span>
+									</a>
+								</li>
+								<li class="w-full">
+									<a
+										class="flex items-center gap-x-3 py-3 px-3 transition-all hover:bg-primaryLight"
+										href=""
+									>
+										<i
+											class="fa-solid fa-right-from-bracket text-2xl text-secondary"
+										></i>
+										<span class="text-[1.5rem] text-secondary">Log out</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<main class="pt-[8.5rem]">
+			<section class="py-3 bg-primary hidden md:block">
+				<ul
+					class="flex items-center justify-center gap-x-10 text-[1.7rem] font-semibold text-white"
+				>
+					<li class="cursor-pointer">
+						<div class="flex items-center gap-x-5">
+							<span>New</span>
+							<svg
+								width="14"
+								height="8"
+								viewBox="0 0 14 8"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M0.230169 0.209376C0.528748 -0.0777189 1.00353 -0.0684095 1.29063 0.230169L7 6.16792L12.7094 0.230169C12.9965 -0.0684095 13.4713 -0.0777189 13.7698 0.209376C14.0684 0.496471 14.0777 0.971254 13.7906 1.26983L7.54063 7.76983C7.39922 7.91689 7.20401 8 7 8C6.79599 8 6.60078 7.91689 6.45938 7.76983L0.209376 1.26983C-0.0777189 0.971254 -0.0684095 0.496471 0.230169 0.209376Z"
+									fill="white"
+								/>
+							</svg>
+						</div>
+					</li>
+					<li class="cursor-pointer">
+						<div class="flex items-center gap-x-5">
+							<span>Women</span>
+							<svg
+								width="14"
+								height="8"
+								viewBox="0 0 14 8"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M0.230169 0.209376C0.528748 -0.0777189 1.00353 -0.0684095 1.29063 0.230169L7 6.16792L12.7094 0.230169C12.9965 -0.0684095 13.4713 -0.0777189 13.7698 0.209376C14.0684 0.496471 14.0777 0.971254 13.7906 1.26983L7.54063 7.76983C7.39922 7.91689 7.20401 8 7 8C6.79599 8 6.60078 7.91689 6.45938 7.76983L0.209376 1.26983C-0.0777189 0.971254 -0.0684095 0.496471 0.230169 0.209376Z"
+									fill="white"
+								/>
+							</svg>
+						</div>
+					</li>
+					<li class="cursor-pointer">
+						<div class="flex items-center gap-x-5">
+							<span>Men</span>
+							<svg
+								width="14"
+								height="8"
+								viewBox="0 0 14 8"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M0.230169 0.209376C0.528748 -0.0777189 1.00353 -0.0684095 1.29063 0.230169L7 6.16792L12.7094 0.230169C12.9965 -0.0684095 13.4713 -0.0777189 13.7698 0.209376C14.0684 0.496471 14.0777 0.971254 13.7906 1.26983L7.54063 7.76983C7.39922 7.91689 7.20401 8 7 8C6.79599 8 6.60078 7.91689 6.45938 7.76983L0.209376 1.26983C-0.0777189 0.971254 -0.0684095 0.496471 0.230169 0.209376Z"
+									fill="white"
+								/>
+							</svg>
+						</div>
+					</li>
+					<li class="cursor-pointer">
+						<div class="flex items-center gap-x-5">
+							<span>Beauty</span>
+							<svg
+								width="14"
+								height="8"
+								viewBox="0 0 14 8"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M0.230169 0.209376C0.528748 -0.0777189 1.00353 -0.0684095 1.29063 0.230169L7 6.16792L12.7094 0.230169C12.9965 -0.0684095 13.4713 -0.0777189 13.7698 0.209376C14.0684 0.496471 14.0777 0.971254 13.7906 1.26983L7.54063 7.76983C7.39922 7.91689 7.20401 8 7 8C6.79599 8 6.60078 7.91689 6.45938 7.76983L0.209376 1.26983C-0.0777189 0.971254 -0.0684095 0.496471 0.230169 0.209376Z"
+									fill="white"
+								/>
+							</svg>
+						</div>
+					</li>
+					<li class="cursor-pointer">
+						<span>
+							<a href=""> Wellness </a>
+						</span>
+					</li>
+					<li class="cursor-pointer">
+						<span>
+							<a href=""> Sales </a>
+						</span>
+					</li>
+				</ul>
+			</section>
+			<section
+				class="px-4 md:px-0 py-12 bg-[#FEF2F4] lg:px-[3rem] xl:px-[5rem] flex flex-col items-center lg:items-start gap-10 lg:flex-row"
+			>
+				<div class="flex flex-col gap-y-10 md:w-[80%] lg:w-[55%]">
+					<div class="w-full flex flex-col gap-y-7">
+						<p class="text-[2rem] font-semibold text-secondary">
+							Delivery Information
+						</p>
+						<form class="w-full bg-white p-8" action="">
+							<div class="flex justify-between gap-x-8 mb-10 last:mb-0">
+								<div class="flex grow flex-col gap-y-6">
+									<label
+										for="login_email"
+										class="text-2xl font-medium text-customBlack"
+										>Name</label
+									>
+									<div
+										class="w-full border-[1.5px] border-[#D2D1D1] focus-within:border-secondary transition-all duration-300 h-[50px] flex items-center px-5 gap-x-3"
+									>
+										<input
+											class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
+											type="text"
+											placeholder="Name"
+											name=""
+											id=""
+										/>
+									</div>
+								</div>
+								<div class="flex grow flex-col gap-y-6">
+									<label
+										for="login_email"
+										class="text-2xl font-medium text-customBlack"
+										>Phone Number</label
+									>
+									<div
+										class="w-full border-[1.5px] border-[#D2D1D1] focus-within:border-secondary transition-all duration-300 h-[50px] flex items-center px-5 gap-x-3"
+									>
+										<input
+											class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
+											type="text"
+											placeholder="Phone Number"
+											name=""
+											id=""
+										/>
+									</div>
+								</div>
+							</div>
+							<div class="mb-10 last:mb-0">
+								<div class="flex grow flex-col gap-y-6">
+									<label
+										for="login_email"
+										class="text-2xl font-medium text-customBlack"
+										>Email</label
+									>
+									<div
+										class="w-full border-[1.5px] border-[#D2D1D1] focus-within:border-secondary transition-all duration-300 h-[50px] flex items-center px-5 gap-x-3"
+									>
+										<input
+											class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
+											type="email"
+											placeholder="Email"
+											name=""
+											id=""
+										/>
+									</div>
+								</div>
+							</div>
+							<div class="flex justify-between gap-x-8 mb-10 last:mb-0">
+								<div class="flex grow flex-col gap-y-6">
+									<label
+										for="login_email"
+										class="text-2xl font-medium text-customBlack"
+										>State</label
+									>
+									<select
+										class="text-2xl font-medium w-full outline-none border-[1.5px] border-[#D2D1D1] focus-within:border-secondary transition-all duration-300 h-[50px] flex items-center px-5 gap-x-3"
+										name=""
+										id=""
+									>
+										<option
+											class="text-2xl font-medium"
+											disabled
+											selected
+											value=""
+										>
+											Select State
+										</option>
+										<option class="text-2xl font-medium" value="">Texas</option>
+									</select>
+								</div>
+								<div class="flex grow flex-col gap-y-6">
+									<label
+										for="login_email"
+										class="text-2xl font-medium text-customBlack"
+										>City</label
+									>
+									<select
+										class="text-2xl font-medium w-full outline-none border-[1.5px] border-[#D2D1D1] focus-within:border-secondary transition-all duration-300 h-[50px] flex items-center px-5 gap-x-3"
+										name=""
+										id=""
+									>
+										<option
+											class="text-2xl font-medium"
+											disabled
+											selected
+											value=""
+										>
+											Select City
+										</option>
+										<option class="text-2xl font-medium" value="">Texas</option>
+									</select>
+								</div>
+							</div>
+							<div class="mb-10 last:mb-0">
+								<div class="flex grow flex-col gap-y-6">
+									<label
+										for="login_email"
+										class="text-2xl font-medium text-customBlack"
+										>Address</label
+									>
+									<div
+										class="w-full border-[1.5px] border-[#D2D1D1] focus-within:border-secondary transition-all duration-300 h-[50px] flex items-center px-5 gap-x-3"
+									>
+										<input
+											class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
+											type="address"
+											placeholder="Address"
+											name=""
+											id=""
+										/>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="w-full flex flex-col gap-y-7">
+						<p class="text-[2rem] font-semibold text-secondary">
+							Payment Method
+						</p>
+						<div class="flex items-center justify-between h-[68px]">
+							<div
+								class="cursor-pointer grow flex items-center justify-center h-full bg-primary text-white text-[1.5rem] p-3 md:p-0 text-center md:text-[1.7rem]"
+							>
+								<span>Online Payment</span>
+							</div>
+							<div
+								class="cursor-pointer grow flex items-center justify-center h-full bg-white text-customBlack text-[1.5rem] p-3 md:p-0 text-center md:text-[1.7rem]"
+							>
+								<span>Cash on Delivery</span>
+							</div>
+							<div
+								class="cursor-pointer grow flex items-center justify-center h-full bg-white text-customBlack text-[1.5rem] p-3 md:p-0 text-center md:text-[1.7rem]"
+							>
+								<span>POS on Delivery</span>
+							</div>
+						</div>
+						<form class="w-full bg-white p-8" action="">
+							<div class="mb-10 last:mb-0">
+								<div class="flex grow flex-col gap-y-6">
+									<label
+										for="login_email"
+										class="text-2xl font-medium text-customBlack"
+										>Cardholder's Name</label
+									>
+									<div
+										class="w-full border-[1.5px] border-[#D2D1D1] focus-within:border-secondary transition-all duration-300 h-[50px] flex items-center px-5 gap-x-3"
+									>
+										<input
+											class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
+											type="email"
+											placeholder="Cardholder's Name"
+											name=""
+											id=""
+										/>
+									</div>
+								</div>
+							</div>
+							<div class="mb-10 last:mb-0">
+								<div class="flex grow flex-col gap-y-6">
+									<label
+										for="login_email"
+										class="text-2xl font-medium text-customBlack"
+										>Card Number</label
+									>
+									<div
+										class="w-full border-[1.5px] border-[#D2D1D1] focus-within:border-secondary transition-all duration-300 h-[50px] flex items-center px-5 gap-x-3"
+									>
+										<input
+											class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
+											type="address"
+											placeholder="Card Number"
+											name=""
+											id=""
+										/>
+									</div>
+								</div>
+							</div>
+							<div class="flex justify-between gap-x-8 mb-10 last:mb-0">
+								<div class="flex grow flex-col gap-y-6">
+									<label
+										for="login_email"
+										class="text-2xl font-medium text-customBlack"
+										>MM/YY</label
+									>
+									<div
+										class="w-full border-[1.5px] border-[#D2D1D1] focus-within:border-secondary transition-all duration-300 h-[50px] flex items-center px-5 gap-x-3"
+									>
+										<input
+											class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
+											type="text"
+											placeholder="MM/YY"
+											name=""
+											id=""
+										/>
+									</div>
+								</div>
+								<div class="flex grow flex-col gap-y-6">
+									<label
+										for="login_email"
+										class="text-2xl font-medium text-customBlack"
+										>CVV</label
+									>
+									<div
+										class="w-full border-[1.5px] border-[#D2D1D1] focus-within:border-secondary transition-all duration-300 h-[50px] flex items-center px-5 gap-x-3"
+									>
+										<input
+											class="text-2xl border-none outline-none grow w-[90%] h-full bg-transparent"
+											type="text"
+											placeholder="CVV"
+											name=""
+											id=""
+										/>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="md:w-[80%] lg:w-[45%]">
+					<div class="w-full flex flex-col gap-y-7">
+						<p class="text-[2rem] font-semibold text-secondary">
+							Order Summary
+						</p>
+						<div class="bg-white p-8 flex flex-col gap-y-7">
+							<div class="flex flex-col gap-y-7">
+								<div class="flex gap-x-7 pb-5">
+									<img
+										class="w-[91px] h-[84px] object-cover"
+										src="images/cart-image.png"
+										alt=""
+									/>
+									<div>
+										<span class="text-[1.7rem] font-semibold"
+											>A Moment Matte Liquid Lipstick</span
+										>
+										<div class="mt-4 flex items-center gap-x-5">
+											<span class="text-customBlack text-[1.7rem]">$23.45</span>
+											<span class="text-red-500 text-[1.7rem] line-through"
+												>$23.45</span
+											>
+										</div>
+									</div>
+								</div>
+								<div class="flex gap-x-7 pb-5">
+									<img
+										class="w-[91px] h-[84px] object-cover"
+										src="images/cart-image.png"
+										alt=""
+									/>
+									<div>
+										<span class="text-[1.7rem] font-semibold"
+											>A Moment Matte Liquid Lipstick</span
+										>
+										<div class="mt-4 flex items-center gap-x-5">
+											<span class="text-customBlack text-[1.7rem]">$23.45</span>
+											<span class="text-red-500 text-[1.7rem] line-through"
+												>$23.45</span
+											>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="border-t-[1.5px] border-t-primary py-8">
+								<p class="flex items-center justify-between">
+									<span class="text-customBlack font-bold text-[1.7rem]"
+										>Estimated Total</span
+									>
+									<span class="text-customBlack font-bold text-[1.7rem]"
+										>$13.56</span
+									>
+								</p>
+								<button
+									class="mt-8 w-full flex items-center justify-center py-6 border-[1.5px] border-secondary bg-secondary text-[2rem] font-semibold text-white transition-all duration-200 hover:border-primary hover:bg-primary hover:text-white"
+								>
+									Confirm Order
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer
+			class="py-7 flex flex-col gap-y-7 justify-center lg:flex-row items-center lg:justify-between px-8 lg:px-[3rem] xl:px-[5rem]"
+		>
+			<ul
+				class="flex flex-wrap md:flex-nowrap items-center justify-center md:justify-start gap-x-8 gap-y-5"
+			>
+				<li>
+					<a href="" class="text-[1.7rem] text-customBlack">Privacy Policy</a>
+				</li>
+				<li>
+					<a href="" class="text-[1.7rem] text-customBlack">Terms</a>
+				</li>
+				<li>
+					<a href="" class="text-[1.7rem] text-customBlack">Refund Policy</a>
+				</li>
+				<li>
+					<a href="" class="text-[1.7rem] text-customBlack">Contact us</a>
+				</li>
+			</ul>
+			<span class="text-[1.7rem] text-customBlack"
+				>Copyright &copy; 2023, All rights reserved</span
+			>
+		</footer>
+	</body>
+</html>
