@@ -1,6 +1,7 @@
 init(() => {
 	Alpine.data("auth", () => ({
 		open: false,
+		currentTab: "signin",
 		get isOpen() {
 			return this.open;
 		},

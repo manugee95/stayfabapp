@@ -13,6 +13,7 @@
 		<script defer src="../src/js/components/auth.js"></script>
 		<script defer src="../src/js/components/cart.js"></script>
 		<script defer src="../src/js/components/account.js"></script>
+		<script defer src="../src/js/components/product.js"></script>
 		<script
 			defer
 			src="https://unpkg.com/alpinejs@3.10.4/dist/cdn.min.js"
@@ -20,6 +21,32 @@
 		<title>Stayfab</title>
 	</head>
 	<body>
+		<div
+			x-data
+			class="z-[9999] py-6 px-5 text-2xl font-medium text-white fixed top-[8rem] w-[300px] left-0 right-0 m-auto bg-secondary rounded-lg flex items-center justify-between"
+		>
+			<span class="max-w-[90%] grow">Product Added to cart</span>
+			<span
+				@click="$root.style.display='none'"
+				class="flex items-center justify-center w-[35px] h-[35px] rounded-full cursor-pointer"
+			>
+				<svg
+					class="stroke-white"
+					width="22"
+					height="22"
+					viewBox="0 0 22 22"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path
+						d="M1 21L21 1M1 1L21 21"
+						stroke-width="1.5"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
+				</svg>
+			</span>
+		</div>
 		<template x-data x-teleport="body">
 			<div
 				x-data="auth"
@@ -65,15 +92,27 @@
 								class="mt-12 w-full h-[50px] flex items-center overflow-hidden rounded-lg bg-primaryLight"
 							>
 								<span
-									class="w-1/2 flex items-center justify-center h-full bg-secondary text-2xl font-medium text-white cursor-pointer"
+									@click="currentTab ='signin'"
+									:class="{
+										'bg-secondary text-white':currentTab === 'signin',
+										'bg-transparent text-[#c4c4c4]':currentTab !== 'signin',
+
+									}"
+									class="w-1/2 flex items-center justify-center h-full  text-2xl font-medium  cursor-pointer"
 									>Sign In</span
 								>
 								<span
-									class="w-1/2 flex items-center justify-center h-full bg-transparent text-2xl font-medium text-[#c4c4c4] cursor-pointer"
+									@click="currentTab ='signup'"
+									:class="{
+										'bg-secondary text-white':currentTab === 'signup',
+										'bg-transparent text-[#c4c4c4]':currentTab !== 'signup',
+
+									}"
+									class="w-1/2 flex items-center justify-center h-full  text-2xl font-medium  cursor-pointer"
 									>Create Account</span
 								>
 							</div>
-							<form action="" class="hidden mt-12 flex-col gap-y-8">
+							<form action="" x-show="currentTab === 'signin'" class="flex mt-12 flex-col gap-y-8">
 								<div class="flex flex-col gap-y-6">
 									<label
 										for="login_email"
@@ -118,7 +157,7 @@
 									</button>
 								</div>
 							</form>
-							<form action="" class="flex mt-12 flex-col gap-y-8">
+							<form action="" x-show="currentTab === 'signup'" class="flex mt-12 flex-col gap-y-8">
 								<div class="flex flex-col gap-y-6">
 									<label
 										for="login_email"
@@ -263,10 +302,12 @@
 											>
 										</div>
 										<div
+											x-data="product"
 											class="flex flex-col gap-y-6 md:flex-row md:items-center justify-between mt-6"
 										>
 											<div class="flex items-center gap-x-10">
 												<span
+													@click="decrementQuantity()"
 													class="flex items-center justify-center w-[27px] h-[27px] bg-secondary cursor-pointer"
 												>
 													<svg
@@ -287,8 +328,9 @@
 														/>
 													</svg>
 												</span>
-												<span class="text-[1.7rem] text-customBlack">1</span>
+												<span x-text="quantity" class="text-[1.7rem] text-customBlack">1</span>
 												<span
+													@click="incrementQuantity()"
 													class="flex items-center justify-center w-[27px] h-[27px] bg-secondary cursor-pointer"
 												>
 													<svg
