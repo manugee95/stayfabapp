@@ -23,7 +23,7 @@
 	<body>
 		<div
 			x-data
-			class="z-[9999] py-6 px-5 text-2xl font-medium text-white fixed top-[8rem] w-[300px] left-0 right-0 m-auto bg-secondary rounded-lg flex items-center justify-between"
+			class="shadow-lg z-[9999] py-6 px-5 text-2xl font-medium text-white fixed top-[8rem] w-[300px] left-0 right-0 m-auto bg-primary rounded-lg flex items-center justify-between"
 		>
 			<span class="max-w-[90%] grow">Product Added to cart</span>
 			<span
@@ -98,7 +98,7 @@
 										'bg-transparent text-[#c4c4c4]':currentTab !== 'signin',
 
 									}"
-									class="w-1/2 flex items-center justify-center h-full  text-2xl font-medium  cursor-pointer"
+									class="w-1/2 flex items-center justify-center h-full text-2xl font-medium cursor-pointer"
 									>Sign In</span
 								>
 								<span
@@ -108,11 +108,15 @@
 										'bg-transparent text-[#c4c4c4]':currentTab !== 'signup',
 
 									}"
-									class="w-1/2 flex items-center justify-center h-full  text-2xl font-medium  cursor-pointer"
+									class="w-1/2 flex items-center justify-center h-full text-2xl font-medium cursor-pointer"
 									>Create Account</span
 								>
 							</div>
-							<form action="" x-show="currentTab === 'signin'" class="flex mt-12 flex-col gap-y-8">
+							<form
+								action=""
+								x-show="currentTab === 'signin'"
+								class="flex mt-12 flex-col gap-y-8"
+							>
 								<div class="flex flex-col gap-y-6">
 									<label
 										for="login_email"
@@ -157,7 +161,11 @@
 									</button>
 								</div>
 							</form>
-							<form action="" x-show="currentTab === 'signup'" class="flex mt-12 flex-col gap-y-8">
+							<form
+								action=""
+								x-show="currentTab === 'signup'"
+								class="flex mt-12 flex-col gap-y-8"
+							>
 								<div class="flex flex-col gap-y-6">
 									<label
 										for="login_email"
@@ -281,7 +289,7 @@
 								</svg>
 							</span>
 						</div>
-						<div class="bg-[#FEF2F4] px-8">
+						<div class="bg-primaryLight px-8">
 							<div class="flex flex-col gap-y-8 py-8">
 								<div
 									class="flex gap-x-7 last:border-0 border-b border-b-secondary pb-5"
@@ -328,7 +336,11 @@
 														/>
 													</svg>
 												</span>
-												<span x-text="quantity" class="text-[1.7rem] text-customBlack">1</span>
+												<span
+													x-text="quantity"
+													class="text-[1.7rem] text-customBlack"
+													>1</span
+												>
 												<span
 													@click="incrementQuantity()"
 													class="flex items-center justify-center w-[27px] h-[27px] bg-secondary cursor-pointer"
@@ -429,7 +441,7 @@
 							</div>
 						</div>
 						<div
-							class="border-y-[1.5px] bg-[#FEF2F4] border-y-primary py-8 px-8"
+							class="border-y-[1.5px] bg-primaryLight border-y-primary py-8 px-8"
 						>
 							<ul class="w-full flex flex-col gap-y-5">
 								<li class="flex items-center justify-between">
@@ -467,16 +479,43 @@
 			</div>
 		</template>
 		<header class="top-0 fixed w-full z-[2]">
+			<a href="">
+				<div
+					x-data="countdown"
+					x-effect="setCountdown('2023-02-27T15:00:00')"
+					class="px-5 md:px-0 h-[50px] bg-primary w-full flex items-center justify-between md:justify-center md:gap-x-5"
+				>
+					<span
+						class="text-[1.3rem] md:text-[1.7rem] text-white text-center w-[60%] md:w-max"
+						>Final Hours! 50% Off Everything</span
+					>
+					<span class="hidden md:flex text-[1.7rem] text-white">|</span>
+					<p class="text-[1.7rem] text-white">
+						<span
+							><span class="font-bold text-[2rem]" x-text="hours">10</span>h
+							:</span
+						>
+						<span
+							><span class="font-bold text-[2rem]" x-text="minutes">05</span>m
+							:</span
+						>
+						<span
+							><span class="font-bold text-[2rem]" x-text="seconds">34</span
+							>s</span
+						>
+					</p>
+					<span class="hidden md:flex stext-[1.7rem] text-white">|</span>
+					<span class="hidden md:flex underline text-[1.7rem] text-white"
+						>Shop Now</span
+					>
+				</div>
+			</a>
 			<div
-				class="h-[8.5rem] bg-[#FFF8FB] flex items-center justify-between px-8 md:px-[5rem]"
+				class="h-[8.5rem] bg-secondary flex items-center justify-between px-8 md:px-[5rem]"
 			>
 				<a href="index.html">
 					<div class="flex items-center gap-x-5">
 						<img src="images/stayfabLogo.png" alt="stayfab logo" />
-						<span
-							class="text-[1.8rem] md:text-[2.5rem] text-secondary font-bold"
-							>Stayfab</span
-						>
 					</div>
 				</a>
 				<div x-data="menu" class="block lg:hidden">
@@ -497,7 +536,7 @@
 						>
 							<path
 								d="M1 1H17.5M1 6.25H17.5M9.25 11.5H17.5"
-								class="stroke-secondary"
+								class="stroke-white"
 								stroke-width="1.5"
 								stroke-linecap="round"
 								stroke-linejoin="round"
@@ -513,7 +552,7 @@
 						>
 							<path
 								d="M1 21L21 1M1 1L21 21"
-								class="stroke-secondary"
+								class="stroke-white"
 								stroke-width="1.5"
 								stroke-linecap="round"
 								stroke-linejoin="round"
@@ -523,7 +562,7 @@
 					<template x-teleport="body">
 						<div
 							:class="open ? 'translate-x-0' : 'translate-x-[1000px]'"
-							class="w-full md:w-[500px] h-full block lg:hidden overflow-auto bg-white fixed top-[8.5rem] md:right-0 z-[3] p-8 pb-[8.5rem] duration-300 transition-all"
+							class="w-full md:w-[500px] h-full block lg:hidden overflow-auto bg-white fixed top-[13.5rem] md:right-0 z-[3] p-8 pb-[8.5rem] duration-300 transition-all"
 						>
 							<div x-show="isSearching" class="w-full flex items-center">
 								<form class="w-full" action="">
@@ -814,7 +853,7 @@
 							>
 								<path
 									d="M13.6255 9.5V5C13.6255 2.92893 11.9466 1.25 9.87548 1.25C7.80442 1.25 6.12548 2.92893 6.12548 5V9.5M17.4815 7.50723L18.7447 19.5072C18.8146 20.1715 18.2938 20.75 17.6258 20.75H2.12512C1.45721 20.75 0.936382 20.1715 1.0063 19.5072L2.26946 7.50723C2.32973 6.93466 2.81255 6.5 3.38828 6.5H16.3627C16.9384 6.5 17.4212 6.93466 17.4815 7.50723ZM6.50048 9.5C6.50048 9.70711 6.33259 9.875 6.12548 9.875C5.91838 9.875 5.75048 9.70711 5.75048 9.5C5.75048 9.29289 5.91838 9.125 6.12548 9.125C6.33259 9.125 6.50048 9.29289 6.50048 9.5ZM14.0005 9.5C14.0005 9.70711 13.8326 9.875 13.6255 9.875C13.4184 9.875 13.2505 9.70711 13.2505 9.5C13.2505 9.29289 13.4184 9.125 13.6255 9.125C13.8326 9.125 14.0005 9.29289 14.0005 9.5Z"
-									stroke="black"
+									stroke="white"
 									stroke-width="1.5"
 									stroke-linecap="round"
 									stroke-linejoin="round"
@@ -837,14 +876,14 @@
 						>
 							<path
 								d="M11.9998 5C11.9998 7.07107 10.3209 8.75 8.24984 8.75C6.17877 8.75 4.49984 7.07107 4.49984 5C4.49984 2.92893 6.17877 1.25 8.24984 1.25C10.3209 1.25 11.9998 2.92893 11.9998 5Z"
-								stroke="black"
+								stroke="white"
 								stroke-width="1.5"
 								stroke-linecap="round"
 								stroke-linejoin="round"
 							/>
 							<path
 								d="M0.750977 19.1182C0.821282 15.0369 4.15171 11.75 8.24984 11.75C12.3481 11.75 15.6786 15.0371 15.7487 19.1185C13.4659 20.166 10.9262 20.75 8.25016 20.75C5.57384 20.75 3.03394 20.1659 0.750977 19.1182Z"
-								stroke="black"
+								stroke="white"
 								stroke-width="1.5"
 								stroke-linecap="round"
 								stroke-linejoin="round"
@@ -976,7 +1015,7 @@
 				</ul>
 			</section>
 			<section
-				class="px-4 md:px-0 py-12 bg-[#FEF2F4] lg:px-[3rem] xl:px-[5rem] flex flex-col items-center lg:items-start gap-10 lg:flex-row"
+				class="px-4 md:px-0 py-12 bg-primaryLight lg:px-[3rem] xl:px-[5rem] flex flex-col items-center lg:items-start gap-10 lg:flex-row"
 			>
 				<div class="flex flex-col gap-y-10 md:w-[80%] lg:w-[55%]">
 					<div class="w-full flex flex-col gap-y-7">
