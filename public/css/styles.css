@@ -707,6 +707,10 @@ video {
   height: 100%;
 }
 
+.h-screen{
+  height: 100vh;
+}
+
 .w-1\/2{
   width: 50%;
 }
@@ -1400,6 +1404,18 @@ html {
 
 body{
   font-family:  'Sora', sans-serif;
+}
+
+input{
+  height: 100%;
+  width: 90%;
+  flex-grow: 1;
+  border-style: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .last\:mb-0:last-child{

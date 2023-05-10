@@ -10,3 +10,7 @@ html {
 body {
 	@apply font-custom;
 }
+
+input {
+	@apply text-2xl border-none outline-none grow w-[90%] h-full bg-transparent;
+}
