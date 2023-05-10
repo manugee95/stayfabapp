@@ -1418,6 +1418,18 @@ input{
   outline-offset: 2px;
 }
 
+input:focus{
+  --tw-border-opacity: 1;
+  border-color: rgb(32 30 31 / var(--tw-border-opacity));
+}
+
+#reset-form label{
+  display: block;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+}
+
 .last\:mb-0:last-child{
   margin-bottom: 0px;
 }

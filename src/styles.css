@@ -12,5 +12,9 @@ body {
 }
 
 input {
-	@apply text-2xl border-none outline-none grow w-[90%] h-full bg-transparent;
+	@apply text-2xl border-none outline-none grow w-[90%] h-full bg-transparent focus:border-secondary;
+}
+
+#reset-form label {
+	@apply block text-2xl font-semibold;
 }
