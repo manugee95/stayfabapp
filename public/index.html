@@ -18,6 +18,7 @@
 		<script defer src="../src/js/components/cart.js"></script>
 		<script defer src="../src/js/components/account.js"></script>
 		<script defer src="../src/js/components/countdown.js"></script>
+		<script defer src="../src/js/components/category.js"></script>
 		<script
 			defer
 			src="https://unpkg.com/alpinejs@3.10.4/dist/cdn.min.js"
@@ -697,17 +698,28 @@
 								<ul
 									class="w-full flex flex-col items-center justify-center gap-y-6"
 								>
-									<li class="w-full border-b border-b-primary py-4">
-										<div class="flex items-center justify-between">
-											<span class="text-2xl font-medium text-customBlack"
+									<li
+										x-data="category"
+										@click.outside="open=false"
+										class="w-full border-b border-b-primary py-4"
+									>
+										<div
+											@click="open = !open"
+											class="flex items-center justify-between"
+										>
+											<span
+												:class="{'font-bold text-primary':open,'font-medium':!open}"
+												class="text-2xl font-medium text-customBlack"
 												>New In</span
 											>
 											<span>
 												<svg
 													width="14"
 													height="8"
+													:class="open ? 'rotate-180' : 'rotate-0'"
 													viewBox="0 0 14 8"
 													fill="none"
+													class="transition duration-200"
 													xmlns="http://www.w3.org/2000/svg"
 												>
 													<path
@@ -718,6 +730,31 @@
 													/>
 												</svg>
 											</span>
+										</div>
+										<div class="mt-5" x-show="open" x-transition>
+											<ul class="flex flex-col gap-y-5">
+												<li class="py-3 hover:bg-primaryLight">
+													<a href="">
+														<span class="text-2xl font-medium text-customBlack"
+															>Jeans</span
+														>
+													</a>
+												</li>
+												<li class="py-3 hover:bg-primaryLight">
+													<a href="">
+														<span class="text-2xl font-medium text-customBlack"
+															>Mini Skirts</span
+														>
+													</a>
+												</li>
+												<li class="py-3 hover:bg-primaryLight">
+													<a href="">
+														<span class="text-2xl font-medium text-customBlack"
+															>Wig</span
+														>
+													</a>
+												</li>
+											</ul>
 										</div>
 									</li>
 									<li class="w-full border-b border-b-primary py-4">
@@ -930,12 +967,18 @@
 				<ul
 					class="flex items-center justify-center gap-x-10 text-[1.7rem] font-semibold text-white"
 				>
-					<li class="cursor-pointer">
-						<div class="flex items-center gap-x-5">
+					<li
+						x-data="category"
+						@click.outside="open=false"
+						class="cursor-pointer relative"
+					>
+						<div @click="open = !open" class="flex items-center gap-x-5">
 							<span>New</span>
 							<svg
 								width="14"
 								height="8"
+								:class="open ? 'rotate-180' : 'rotate-0'"
+								class="transition-all duration-200"
 								viewBox="0 0 14 8"
 								fill="none"
 								xmlns="http://www.w3.org/2000/svg"
@@ -947,6 +990,34 @@
 									fill="white"
 								/>
 							</svg>
+						</div>
+						<div
+							x-show="open"
+							x-transition
+							class="z-[1] w-[300px] bg-white rounded-lg shadow-lg absolute top-[120%] p-5"
+						>
+							<ul
+								class="text-2xl font-medium text-customBlack flex flex-col cursor-pointer"
+							>
+								<li class="hover:bg-primaryLight p-3 cursor-pointer">
+									<a href="">Jeans</a>
+								</li>
+								<li class="hover:bg-primaryLight p-3 cursor-pointer">
+									<a href="">Mini Skirts</a>
+								</li>
+								<li class="hover:bg-primaryLight p-3 cursor-pointer">
+									<a href="">Jeans</a>
+								</li>
+								<li class="hover:bg-primaryLight p-3 cursor-pointer">
+									<a href="">Mini Skirts</a>
+								</li>
+								<li class="hover:bg-primaryLight p-3 cursor-pointer">
+									<a href="">Jeans</a>
+								</li>
+								<li class="hover:bg-primaryLight p-3 cursor-pointer">
+									<a href="">Mini Skirts</a>
+								</li>
+							</ul>
 						</div>
 					</li>
 					<li class="cursor-pointer">
@@ -1019,7 +1090,7 @@
 				</ul>
 			</section>
 			<section>
-				<div class="w-full md:h-[300px] lg:h-[395px]">
+				<div class="z[-1] w-full md:h-[300px] lg:h-[395px]">
 					<video
 						poster="https://images.unsplash.com/photo-1544957992-20514f595d6f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
 						class="h-full w-full object-cover object-top"
@@ -1040,7 +1111,7 @@
 						>Featured Products</span
 					>
 					<a
-						href=""
+						href="blog-details.html"
 						class="px-12 py-5 border-[1.5px] border-secondary text-secondary text-2xl md:text-[1.7rem] transition-all duration-200 hover:border-primary hover:text-primary"
 						>View all</a
 					>
