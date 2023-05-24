@@ -19,6 +19,8 @@
 		<script defer src="../src/js/components/account.js"></script>
 		<script defer src="../src/js/components/countdown.js"></script>
 		<script defer src="../src/js/components/category.js"></script>
+		<script defer src="../src/js/components/review.js"></script>
+		<script defer src="../src/js/components/product.js"></script>
 		<script
 			defer
 			src="https://unpkg.com/alpinejs@3.10.4/dist/cdn.min.js"
@@ -52,6 +54,49 @@
 				</svg>
 			</span>
 		</div>
+		<!-- POPUP START -->
+		<template x-data="popup" x-teleport="body">
+			<div x-show="open" class="fixed z-[4] bg-overlayColor top-0 w-full h-full left-0">
+				<template x-teleport="body">
+					<div
+						x-show="open"
+						@click="open=false"
+						class="fixed top-0 md:top-[5%] left-0 right-0 m-auto z-[5] w-[95%] h-[95%] md:w-[512px] md:h-[400px] bg-white rounded-lg flex flex-col"
+					>
+						<div class="p-5 bg-[#1E1E1E] flex items-center justify-between">
+							<img src="images/stayfabLogo.png" alt="" />
+							<span
+								@click="open=false"
+								class="flex items-center justify-center w-[35px] h-[35px] rounded-full cursor-pointer"
+							>
+								<svg
+									class="stroke-white"
+									width="22"
+									height="22"
+									viewBox="0 0 22 22"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										d="M1 21L21 1M1 1L21 21"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									/>
+								</svg>
+							</span>
+						</div>
+						<div class="grow"></div>
+						<div
+							class="w-[80%] md:w-1/2 md:absolute bottom-[-5%] left-0 right-0 m-auto flex items-center justify-center px-5 py-7 bg-primary text-2xl text-white font-medium"
+						>
+							<a href="">Get to shopping</a>
+						</div>
+					</div>
+				</template>
+			</div>
+		</template>
+		<!-- POPUP END -->
 		<template x-data x-teleport="body">
 			<div
 				x-data="auth"

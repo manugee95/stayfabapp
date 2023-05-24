@@ -563,6 +563,18 @@ video {
   top: 8rem;
 }
 
+.bottom-\[\]{
+  bottom: ;
+}
+
+.bottom-\[-5\%\]{
+  bottom: -5%;
+}
+
+.z-\[1\]{
+  z-index: 1;
+}
+
 .z-\[2\]{
   z-index: 2;
 }
@@ -581,26 +593,6 @@ video {
 
 .z-\[9999\]{
   z-index: 9999;
-}
-
-.z-\[999\]{
-  z-index: 999;
-}
-
-.z-\[9\]{
-  z-index: 9;
-}
-
-.z-\[90\]{
-  z-index: 90;
-}
-
-.z-\[\]{
-  z-index: ;
-}
-
-.z-\[1\]{
-  z-index: 1;
 }
 
 .order-last{
@@ -657,6 +649,10 @@ video {
 
 .mt-8{
   margin-top: 2rem;
+}
+
+.mb-12{
+  margin-bottom: 3rem;
 }
 
 .block{
@@ -731,8 +727,21 @@ video {
   height: 100%;
 }
 
-.h-screen{
-  height: 100vh;
+.h-\[\]{
+  height: ;
+}
+
+.h-\[95\%\]{
+  height: 95%;
+}
+
+.h-\[200px\]{
+  height: 200px;
+}
+
+.h-max{
+  height: -moz-max-content;
+  height: max-content;
 }
 
 .w-1\/2{
@@ -804,6 +813,18 @@ video {
   width: max-content;
 }
 
+.w-\[80\%\]{
+  width: 80%;
+}
+
+.w-\[\]{
+  width: ;
+}
+
+.w-\[50px\]{
+  width: 50px;
+}
+
 .max-w-\[90\%\]{
   max-width: 90%;
 }
@@ -826,16 +847,6 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.rotate-45{
-  --tw-rotate: 45deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.rotate-90{
-  --tw-rotate: 90deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .rotate-0{
   --tw-rotate: 0deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -852,6 +863,10 @@ video {
 
 .cursor-pointer{
   cursor: pointer;
+}
+
+.resize-none{
+  resize: none;
 }
 
 .grid-cols-3{
@@ -892,6 +907,10 @@ video {
 
 .gap-10{
   gap: 2.5rem;
+}
+
+.gap-8{
+  gap: 2rem;
 }
 
 .gap-x-10{
@@ -1090,6 +1109,11 @@ video {
   background-color: rgb(254 242 244 / var(--tw-bg-opacity));
 }
 
+.bg-black{
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
 .bg-customBlack{
   --tw-bg-opacity: 1;
   background-color: rgb(53 52 53 / var(--tw-bg-opacity));
@@ -1126,6 +1150,20 @@ video {
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-\[\]{
+  background-color: ;
+}
+
+.bg-\[\#1E1E1E\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 30 30 / var(--tw-bg-opacity));
+}
+
+.bg-red-300{
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
 }
 
 .fill-black{
@@ -1441,16 +1479,16 @@ video {
   outline-offset: 2px;
 }
 
-.transition-all{
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
 .transition{
   transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-all{
+  transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -1570,12 +1608,24 @@ input:focus{
 }
 
 @media (min-width: 768px){
+  .md\:absolute{
+    position: absolute;
+  }
+
   .md\:right-0{
     right: 0px;
   }
 
   .md\:top-\[5\%\]{
     top: 5%;
+  }
+
+  .md\:bottom-\[\]{
+    bottom: ;
+  }
+
+  .md\:bottom-\[-10\%\]{
+    bottom: -10%;
   }
 
   .md\:order-none{
@@ -1616,6 +1666,14 @@ input:focus{
 
   .md\:h-\[500px\]{
     height: 500px;
+  }
+
+  .md\:h-\[400px\]{
+    height: 400px;
+  }
+
+  .md\:h-\[450px\]{
+    height: 450px;
   }
 
   .md\:w-\[148px\]{
@@ -1661,6 +1719,14 @@ input:focus{
   .md\:w-max{
     width: -moz-max-content;
     width: max-content;
+  }
+
+  .md\:w-\[512px\]{
+    width: 512px;
+  }
+
+  .md\:w-1\/2{
+    width: 50%;
   }
 
   .md\:max-w-\[65\%\]{

@@ -14,6 +14,7 @@
 		<script defer src="../src/js/components/cart.js"></script>
 		<script defer src="../src/js/components/account.js"></script>
 		<script defer src="../src/js/components/product.js"></script>
+		<script defer src="../src/js/components/review.js"></script>
 		<script
 			defer
 			src="https://unpkg.com/alpinejs@3.10.4/dist/cdn.min.js"
@@ -47,6 +48,7 @@
 				</svg>
 			</span>
 		</div>
+
 		<template x-data x-teleport="body">
 			<div
 				x-data="auth"
@@ -1045,83 +1047,14 @@
 							tellus phasellus nulla nisl ut. Lorem tempor vitae sed vitae
 							neque.
 						</p>
-						<div class="flex items-center gap-x-3 mt-12">
-							<svg
-								width="20"
-								height="19"
-								viewBox="0 0 20 19"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									fill-rule="evenodd"
-									clip-rule="evenodd"
-									d="M8.69555 0.80846C9.1439 -0.269486 10.6709 -0.269487 11.1193 0.80846L13.2013 5.81417L18.6054 6.24742C19.7691 6.34071 20.241 7.793 19.3543 8.55251L15.237 12.0795L16.4949 17.3529C16.7658 18.4885 15.5304 19.3861 14.5341 18.7775L9.90741 15.9516L5.28076 18.7775C4.28444 19.3861 3.04905 18.4885 3.31993 17.3529L4.57785 12.0795L0.460502 8.55251C-0.426138 7.79301 0.045735 6.34071 1.20947 6.24742L6.61356 5.81417L8.69555 0.80846Z"
-									fill="#353435"
-								/>
-							</svg>
-							<svg
-								width="20"
-								height="19"
-								viewBox="0 0 20 19"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									fill-rule="evenodd"
-									clip-rule="evenodd"
-									d="M8.69555 0.80846C9.1439 -0.269486 10.6709 -0.269487 11.1193 0.80846L13.2013 5.81417L18.6054 6.24742C19.7691 6.34071 20.241 7.793 19.3543 8.55251L15.237 12.0795L16.4949 17.3529C16.7658 18.4885 15.5304 19.3861 14.5341 18.7775L9.90741 15.9516L5.28076 18.7775C4.28444 19.3861 3.04905 18.4885 3.31993 17.3529L4.57785 12.0795L0.460502 8.55251C-0.426138 7.79301 0.045735 6.34071 1.20947 6.24742L6.61356 5.81417L8.69555 0.80846Z"
-									fill="#353435"
-								/>
-							</svg>
-							<svg
-								width="20"
-								height="19"
-								viewBox="0 0 20 19"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									fill-rule="evenodd"
-									clip-rule="evenodd"
-									d="M8.69555 0.80846C9.1439 -0.269486 10.6709 -0.269487 11.1193 0.80846L13.2013 5.81417L18.6054 6.24742C19.7691 6.34071 20.241 7.793 19.3543 8.55251L15.237 12.0795L16.4949 17.3529C16.7658 18.4885 15.5304 19.3861 14.5341 18.7775L9.90741 15.9516L5.28076 18.7775C4.28444 19.3861 3.04905 18.4885 3.31993 17.3529L4.57785 12.0795L0.460502 8.55251C-0.426138 7.79301 0.045735 6.34071 1.20947 6.24742L6.61356 5.81417L8.69555 0.80846Z"
-									fill="#353435"
-								/>
-							</svg>
-							<svg
-								width="20"
-								height="19"
-								viewBox="0 0 20 19"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									fill-rule="evenodd"
-									clip-rule="evenodd"
-									d="M8.69555 0.80846C9.1439 -0.269486 10.6709 -0.269487 11.1193 0.80846L13.2013 5.81417L18.6054 6.24742C19.7691 6.34071 20.241 7.793 19.3543 8.55251L15.237 12.0795L16.4949 17.3529C16.7658 18.4885 15.5304 19.3861 14.5341 18.7775L9.90741 15.9516L5.28076 18.7775C4.28444 19.3861 3.04905 18.4885 3.31993 17.3529L4.57785 12.0795L0.460502 8.55251C-0.426138 7.79301 0.045735 6.34071 1.20947 6.24742L6.61356 5.81417L8.69555 0.80846Z"
-									fill="#353435"
-								/>
-							</svg>
-							<svg
-								width="21"
-								height="20"
-								viewBox="0 0 21 20"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									d="M9.63698 1.34648C9.82913 0.884506 10.4836 0.884506 10.6757 1.34648L12.8017 6.45794C12.8827 6.6527 13.0659 6.78577 13.2761 6.80262L18.7944 7.24502C19.2931 7.285 19.4953 7.90741 19.1153 8.23291L14.911 11.8344C14.7508 11.9716 14.6809 12.1869 14.7298 12.3921L16.0143 17.7769C16.1304 18.2636 15.6009 18.6483 15.1739 18.3875L10.4496 15.5019C10.2695 15.3919 10.0432 15.3919 9.86315 15.5019L5.13876 18.3875C4.71176 18.6483 4.18231 18.2636 4.2984 17.7769L5.58289 12.3921C5.63183 12.1869 5.56187 11.9716 5.40168 11.8344L1.19736 8.23292C0.817369 7.90741 1.0196 7.285 1.51834 7.24502L7.03659 6.80262C7.24685 6.78577 7.43 6.6527 7.51101 6.45794L9.63698 1.34648Z"
-									stroke="#353435"
-									stroke-width="1.5"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-								/>
-							</svg>
+						<div class="flex items-center gap-x-4 mt-12">
+							<span class="text-2xl text-customBlack">Total Reviews</span>
+							<span class="text-2xl font-bold">(234)</span>
 						</div>
 						<div
 							class="mt-10 flex flex-col gap-y-10 items-start md:flex-row md:items-center gap-x-24"
 						>
-							<div class="flex items-center gap-x-16">
+							<div class="flex items-center gap-x-12">
 								<span
 									@click="decrementQuantity()"
 									class="flex items-center justify-center w-[40px] h-[40px] bg-secondary cursor-pointer"
@@ -1184,10 +1117,139 @@
 								</button>
 							</form>
 						</div>
-						<span
-							class="flex mt-10 text-customBlack font-medium underline text-2xl cursor-pointer"
-							>Submit Review</span
-						>
+						<div x-data="review">
+							<span
+								@click="open=true"
+								class="flex mt-10 text-customBlack font-medium underline text-2xl cursor-pointer"
+								>Submit Review</span
+							>
+							<template @click="open=false" x-teleport="body">
+								<div
+									x-show="open"
+									class="fixed z-[4] bg-overlayColor top-0 w-full h-full left-0"
+								>
+									<template x-teleport="body">
+										<div
+											x-show="open"
+											class="fixed top-0 md:top-[5%] left-0 right-0 m-auto z-[5] w-full h-full md:w-[512px] md:h-[450px] bg-white rounded-lg p-8"
+										>
+											<div class="flex items-center justify-between">
+												<span class="text-[2rem] font-semibold text-secondary"
+													>Submit a review</span
+												>
+												<span
+													@click="open=false"
+													class="cursor-pointer flex items-center justify-center w-[35px] h-[35px] rounded-full"
+												>
+													<svg
+														width="22"
+														height="22"
+														viewBox="0 0 22 22"
+														fill="none"
+														xmlns="http://www.w3.org/2000/svg"
+													>
+														<path
+															d="M1 21L21 1M1 1L21 21"
+															stroke="#0F172A"
+															stroke-width="1.5"
+															stroke-linecap="round"
+															stroke-linejoin="round"
+														/>
+													</svg>
+												</span>
+											</div>
+											<form class="mt-8" action="">
+												<div class="flex flex-col gap-y-8">
+													<div class="flex grow flex-col gap-y-6">
+														<label
+															for="login_email"
+															class="text-2xl font-medium text-customBlack"
+															>Your Review</label
+														>
+														<div
+															class="w-full border-[1.5px] border-[#D2D1D1] focus-within:border-secondary transition-all duration-300 h-max flex items-center p-5 gap-x-3"
+														>
+															<textarea
+																class="text-2xl border-none outline-none grow w-[90%] h-[200px] bg-transparent resize-none"
+																type="address"
+																placeholder="Your Review"
+																name=""
+																id=""
+															></textarea>
+														</div>
+													</div>
+													<div>
+														<button
+															type="submit"
+															class="mt-8 w-full flex items-center justify-center py-6 border-[1.5px] border-secondary bg-secondary text-[1.7rem] font-semibold text-white transition-all duration-200 hover:border-primary hover:bg-primary hover:text-white"
+														>
+															Submit
+														</button>
+													</div>
+												</div>
+											</form>
+										</div>
+									</template>
+								</div>
+							</template>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="py-12 px-8 md:px-[5rem]">
+				<p
+					class="mb-12 text-[1.7rem] md:text-[2.5rem] lg:text-[3rem] font-semibold text-secondary"
+				>
+					Product Reviews
+				</p>
+				<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+					<div class="flex flex-col gap-y-5">
+						<div class="flex items-center gap-x-5">
+							<img
+								src="images/blog2.png"
+								class="w-[50px] h-[50px] rounded-full"
+								alt=""
+							/>
+							<span class="text-2xl">Ade Henkins</span>
+						</div>
+						<p class="text-2xl">
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+							laboriosam at cumque perferendis saepe et ratione sed provident
+							distinctio rem esse consequatur, omnis veniam error ex voluptatum
+							autem quibusdam commodi!
+						</p>
+					</div>
+					<div class="flex flex-col gap-y-5">
+						<div class="flex items-center gap-x-5">
+							<img
+								src="images/blog2.png"
+								class="w-[50px] h-[50px] rounded-full"
+								alt=""
+							/>
+							<span class="text-2xl">Ade Henkins</span>
+						</div>
+						<p class="text-2xl">
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+							laboriosam at cumque perferendis saepe et ratione sed provident
+							distinctio rem esse consequatur, omnis veniam error ex voluptatum
+							autem quibusdam commodi!
+						</p>
+					</div>
+					<div class="flex flex-col gap-y-5">
+						<div class="flex items-center gap-x-5">
+							<img
+								src="images/blog2.png"
+								class="w-[50px] h-[50px] rounded-full"
+								alt=""
+							/>
+							<span class="text-2xl">Ade Henkins</span>
+						</div>
+						<p class="text-2xl">
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+							laboriosam at cumque perferendis saepe et ratione sed provident
+							distinctio rem esse consequatur, omnis veniam error ex voluptatum
+							autem quibusdam commodi!
+						</p>
 					</div>
 				</div>
 			</section>
