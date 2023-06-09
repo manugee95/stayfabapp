@@ -25,4 +25,15 @@ init(() => {
 			this.open = false;
 		},
 	}));
+
+	Alpine.data("upgrade", () => ({
+		open: false,
+
+		toggle() {
+			this.open = !this.open;
+		},
+		hideDrop() {
+			this.open = false;
+		},
+	}));
 });
